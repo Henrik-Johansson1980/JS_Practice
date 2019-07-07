@@ -1,3 +1,4 @@
+// Variables
 let scores = [0, 0];
 let roundScore = 0;
 let activePlayer = 0;
@@ -6,9 +7,6 @@ let die = document.querySelector(".dice > i");
 document.querySelector('#name-0').style.borderBottom = "thick solid red";
 let dieRoll = 0;
 
-//die.classList.add('fa-dice-one');
-//console.log(die);
-
 //Display game rules when rules button is clicked
 document.querySelector(".btn-rules").addEventListener("click", () => {
   alert(
@@ -16,6 +14,7 @@ document.querySelector(".btn-rules").addEventListener("click", () => {
   );
 });
 
+// Event listener for the roll button
 document.querySelector(".btn-roll").addEventListener("click", () => {
   dieRoll = Math.floor(Math.random() * 6 + 1);
   //Empty classlist
@@ -53,12 +52,14 @@ document.querySelector(".btn-roll").addEventListener("click", () => {
   document.querySelector("#current-" + activePlayer).innerHTML = roundScore;
 });
 
+// Event listener for the hold button 
 document.querySelector(".btn-hold").addEventListener("click", () => {
   scores[activePlayer] += roundScore;
   document.querySelector("#score-" + activePlayer).innerHTML = scores[activePlayer];
   checkScore();
 });
 
+// Function to change active player
 function changePlayer() {
   roundScore = 0;
   document.querySelector("#current-" + activePlayer).innerHTML = roundScore;
@@ -72,6 +73,7 @@ function changePlayer() {
   }
 }
 
+// Check score 
 function checkScore(){
   if(scores[activePlayer] >= 100){
     document.querySelector("#score-" + activePlayer).innerHTML = scores[activePlayer];
@@ -83,8 +85,10 @@ function checkScore(){
   }
 }
 
+// Eventlistener on the new game button, calls the resetGame function
 document.querySelector(".btn-new").addEventListener("click", resetGame);
 
+// Function that resets the game.
 function resetGame(){
   scores = [0, 0];
   roundScore = 0;
